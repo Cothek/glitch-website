@@ -16,6 +16,7 @@ export function Nav() {
           <a href="#showcase" className="transition-colors hover:text-text">Showcase</a>
           <a href="#architecture" className="transition-colors hover:text-text">Architecture</a>
           <a href="#install" className="transition-colors hover:text-text">Install</a>
+      <a href="#providers" className="transition-colors hover:text-text">Providers</a>
         </div>
 
         <div className="flex items-center gap-2">

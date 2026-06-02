@@ -3,6 +3,7 @@ import { Features } from "@/components/features";
 import { Showcase } from "@/components/showcase";
 import { Architecture } from "@/components/architecture";
 import { Install } from "@/components/install";
+import { Providers } from "@/components/providers";
 import { Download } from "@/components/download";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
@@ -17,6 +18,7 @@ export default function Home() {
         <Showcase />
         <Architecture />
         <Install />
+        <Providers />
         <Download />
       </main>
       <Footer />
