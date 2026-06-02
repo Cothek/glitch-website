@@ -61,8 +61,8 @@ export function Hero() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs text-text-dim">
-          <div className="p-2 backdrop-blur-[2px]">
+        <div className="flex items-center justify-center mt-8">
+          <div className="p-2 backdrop-blur-[2px] flex flex-wrap w-fit items-center justify-center gap-x-6 gap-y-2 rounded-md font-mono text-xs text-text-dim">
             <Stat color="green" label="23 skills" />
             <Stat color="purple" label="3-layer architecture" />
             <Stat color="cyan" label="Windows · macOS · Linux" />
