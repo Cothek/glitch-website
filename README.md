@@ -121,26 +121,7 @@ All design tokens live in `app/globals.css` under `@theme { ... }`. Tailwind v4 
 | `ease-out`, `ease-in-out` | Easing curves |
 | `duration-fast`, `duration`, `duration-slow` | Animation durations |
 
-## Anti-slop checklist
 
-This site is intentionally NOT generic. We avoid:
-
-- ❌ Stock photos
-- ❌ "Trusted by 10,000+" social proof
-- ❌ Cookie-cutter 3-column features
-- ❌ Tailwind default blue-500
-- ❌ Gratuitous gradients everywhere
-- ❌ `text-3xl font-bold` for everything
-
-Instead we use:
-
-- ✅ Real product screenshots
-- ✅ Terminal-style demos with authentic Glitch output
-- ✅ Scan-line hero (echoing the existing glitch-ai landing)
-- ✅ Custom monospace accents (Cascadia/JetBrains Mono)
-- ✅ Restrained color: 90% neutral, accent only on CTAs
-- ✅ Custom SVG icons (no icon library)
-- ✅ Tasteful motion (max 3 simultaneous animations, reduced-motion respected)
 
 ## License
 

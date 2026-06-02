@@ -14,7 +14,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-64 max-w-3xl bg-accent opacity-20 blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-20 sm:pt-28 lg:pt-32">
+      <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-10 sm:pt-10 lg:pt-10">
         {/* Terminal-style prompt chip */}
         <div className="mb-8 flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-elevated/80 px-3 py-1.5 font-mono text-xs text-text-muted">
@@ -25,16 +25,19 @@ export function Hero() {
         </div>
 
         {/* Title */}
-        <h1 className="text-balance text-center text-5xl font-extrabold tracking-tighter sm:text-6xl lg:text-7xl">
+        <h1 className="text-balance text-center text-6xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl">
           <span className="gradient-text glow-purple inline-block">Glitch</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mx-auto mt-6 max-w-2xl text-balance text-center text-lg text-text-muted sm:text-xl">
-          Your AI companion that actually <em className="not-italic text-text">remembers</em>.
-          <br className="hidden sm:inline" />
-          Portable, persistent, private.
-        </p>
+        <div className="flex justify-center w-full mt-4">
+          <p className="text-balance text-center text-lg text-text-muted sm:text-xl p-2 rounded-md backdrop-blur-[2px]">
+            Your AI companion that actually{" "}
+            <em className="not-italic text-text">remembers</em>.
+            <br className="hidden sm:inline" />
+            Portable, persistent, private.
+          </p>
+        </div>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -50,7 +53,7 @@ export function Hero() {
             href="https://github.com/Cothek/glitch-ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-bg-elevated/60 px-6 text-sm font-semibold text-text transition-all hover:border-border-strong hover:bg-bg-elevated"
+            className="inline-flex h-12 items-center gap-2 rounded-full border border-border backdrop-blur-[2px] bg-bg-elevated/60 px-6 text-sm font-semibold text-text transition-all hover:border-border-strong hover:bg-bg-elevated"
           >
             <IconGithub className="h-4 w-4" />
             View on GitHub
@@ -58,11 +61,13 @@ export function Hero() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs text-text-dim">
-          <Stat color="green" label="23 skills" />
-          <Stat color="purple" label="3-layer architecture" />
-          <Stat color="cyan" label="Windows · macOS · Linux" />
-          <Stat color="purple" label="Open source" />
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs text-text-dim">
+          <div className="p-2 backdrop-blur-[2px]">
+            <Stat color="green" label="23 skills" />
+            <Stat color="purple" label="3-layer architecture" />
+            <Stat color="cyan" label="Windows · macOS · Linux" />
+            <Stat color="purple" label="Open source" />
+          </div>
         </div>
       </div>
 
@@ -75,7 +80,13 @@ export function Hero() {
   );
 }
 
-function Stat({ color, label }: { color: "green" | "purple" | "cyan"; label: string }) {
+function Stat({
+  color,
+  label,
+}: {
+  color: "green" | "purple" | "cyan";
+  label: string;
+}) {
   const dotColor = {
     green: "bg-green-500 shadow-[0_0_8px_var(--color-green)]",
     purple: "bg-accent shadow-[0_0_8px_var(--color-accent)]",
@@ -84,7 +95,10 @@ function Stat({ color, label }: { color: "green" | "purple" | "cyan"; label: str
 
   return (
     <span className="inline-flex items-center gap-1.5">
-      <span className={`h-1.5 w-1.5 rounded-full ${dotColor} pulse-dot`} aria-hidden />
+      <span
+        className={`h-1.5 w-1.5 rounded-full ${dotColor} pulse-dot`}
+        aria-hidden
+      />
       {label}
     </span>
   );
