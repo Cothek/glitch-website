@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
 import { execSync } from "child_process";
-import { existsSync } from "fs";
-import { resolve, dirname } from "path";
+import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = resolve(__dirname, "..", "..");
-const ZIP_PATH = resolve(__dirname, "..", "public", "downloads", "glitch-ai.zip");
 const SITE_URL = "https://glitch-ai.vercel.app";
 const REPO_URL = "https://github.com/Cothek/glitch-ai";
 
@@ -18,11 +15,6 @@ const vercelBin = (() => {
 })();
 
 console.log("=== Glitch Website Deploy ===\n");
-
-if (!existsSync(ZIP_PATH)) {
-  console.warn("⚠ Download ZIP not built yet.");
-  console.warn(`  Run \`npm run build:zip\` first to create public/downloads/glitch-ai.zip\n`);
-}
 
 if (token && vercelBin) {
   console.log("✓ VERCEL_TOKEN present, Vercel CLI installed");
