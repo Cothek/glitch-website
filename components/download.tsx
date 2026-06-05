@@ -1,9 +1,10 @@
 import { IconDownload, IconGithub, IconCheck } from "@/components/icons";
 
 const REQUIREMENTS = [
-  "Windows 10+, macOS 12+, or Linux",
+  "Windows 10+, macOS 13+, or Linux (x86_64)",
+  "Node.js 22+ (required for the cross-platform launcher)",
   "API key for an LLM provider (OpenAI, Anthropic, etc.)",
-  "GitHub account (for cloning)",
+  "Git (for cloning — or download the ZIP below)",
   "~500 MB disk (after bootstrap downloads OpenCode + Handy)",
 ];
 
@@ -84,6 +85,9 @@ export function Download() {
               <pre className="mt-3 overflow-x-auto rounded-md bg-bg/60 p-3 font-mono text-xs text-cyan">
                 <code>git clone https://github.com/Cothek/glitch-ai.git</code>
               </pre>
+              <p className="mt-3 text-text-dim text-xs">
+                Prerequisites: <a href="https://git-scm.com/downloads" className="text-accent hover:underline">Git</a> and <a href="https://nodejs.org" className="text-accent hover:underline">Node.js 22+</a>.
+              </p>
             </div>
           </div>
         </div>
