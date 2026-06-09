@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,6 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://glitch-ai.vercel.app";
+
+// Umami analytics — only loads when WEBSITE_ID is set
+const umamiUrl =
+  process.env.NEXT_PUBLIC_UMAMI_URL ?? "https://cloud.umami.is";
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0f",
@@ -89,7 +95,16 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-bg text-text">{children}</body>
+      <body className="min-h-screen bg-bg text-text">
+        {children}
+        {umamiWebsiteId && (
+          <Script
+            defer
+            src={`${umamiUrl}/script.js`}
+            data-website-id={umamiWebsiteId}
+          />
+        )}
+      </body>
     </html>
   );
 }
