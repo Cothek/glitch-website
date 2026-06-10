@@ -37,7 +37,7 @@ export function Showcase() {
               <TerminalLine>
                 <span className="dim">Glitch AI v1.0</span> — <span className="dim">your personal companion</span>
                 {"\n\n"}
-                <span className="prompt-text">💜 Good morning Troy! </span>
+                <span className="prompt-text">💜 Good morning! </span>
                 <span className="dim">8:42 AM on Sunday, June 1st, 2026</span>
                 {"\n"}
                 <span className="dim">Glitch is energized and ready for a productive day together.</span>
