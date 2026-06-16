@@ -1,4 +1,4 @@
-import { IconLayers, IconFolder, IconFile, IconLock, IconServer } from "@/components/icons";
+import { IconLayers, IconFolder, IconFile, IconLock, IconServer, IconExternalLink } from "@/components/icons";
 
 const LAYERS = [
   {
@@ -14,6 +14,7 @@ const LAYERS = [
     ],
     note: "23 skills, identity, prompt rules",
     repo: "Cothek/glitch-engine",
+    url: "https://github.com/Cothek/glitch-engine",
   },
   {
     label: "User Data",
@@ -28,6 +29,7 @@ const LAYERS = [
     ],
     note: "Your profile, sessions, decisions",
     repo: "Cothek/glitch-user-troy",
+    url: "https://github.com/Cothek/glitch-user-troy",
   },
   {
     label: "Launcher",
@@ -42,6 +44,7 @@ const LAYERS = [
     ],
     note: "Setup, launch, validation",
     repo: "Cothek/glitch-ai",
+    url: "https://github.com/Cothek/glitch-ai",
   },
 ];
 
@@ -74,12 +77,6 @@ export function Architecture() {
 
         {/* Architecture diagram */}
         <div className="relative mt-16">
-          {/* Connecting line (visible on lg+) */}
-          <div
-            aria-hidden
-            className="absolute left-0 right-0 top-1/2 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block"
-          />
-
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
             {LAYERS.map((layer) => {
               const Icon = layer.icon;
@@ -114,7 +111,15 @@ export function Architecture() {
                     })}
                   </div>
 
-                  <div className="mt-4 font-mono text-[10px] text-text-dim">{layer.repo}</div>
+                  <a
+                    href={layer.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 font-mono text-[10px] text-text-dim hover:text-cyan transition-colors"
+                  >
+                    {layer.repo}
+                    <IconExternalLink className="h-3 w-3" />
+                  </a>
                 </div>
               );
             })}
