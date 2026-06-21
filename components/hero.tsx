@@ -46,7 +46,7 @@ export function Hero() {
             className="group inline-flex h-12 items-center gap-2 rounded-full bg-accent px-6 text-sm font-semibold text-bg transition-all hover:bg-accent-hover hover:shadow-[0_0_30px_var(--color-accent-soft)]"
           >
             <IconDownload className="h-4 w-4" />
-            Download for Windows
+            Download Glitch
             <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
