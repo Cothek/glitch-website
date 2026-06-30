@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { IconGithub, IconDownload } from "@/components/icons";
 
 export function Nav() {
@@ -13,10 +13,12 @@ export function Nav() {
 
         <div className="hidden items-center gap-6 text-sm text-text-muted sm:flex">
           <a href="#features" className="transition-colors hover:text-text">Features</a>
+          <a href="#skills" className="transition-colors hover:text-text">Skills</a>
           <a href="#showcase" className="transition-colors hover:text-text">Showcase</a>
           <a href="#architecture" className="transition-colors hover:text-text">Architecture</a>
           <a href="#install" className="transition-colors hover:text-text">Install</a>
-      <a href="#providers" className="transition-colors hover:text-text">Providers</a>
+          <a href="#providers" className="transition-colors hover:text-text">Providers</a>
+          <a href="#network" className="transition-colors hover:text-text">Access</a>
         </div>
 
         <div className="flex items-center gap-2">
