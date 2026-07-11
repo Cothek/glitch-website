@@ -2,20 +2,33 @@
 
 import { useState } from "react";
 import { CopyButton } from "@/components/copy-button";
-import { IconTerminal, IconCheck } from "@/components/icons";
+import { IconTerminal, IconCheck, IconDownload } from "@/components/icons";
 
-const WINDOWS = [
-  { n: 1, title: "Clone the repo", body: "Grab the launcher repo.", code: "git clone https://github.com/Cothek/glitch-ai.git\ncd glitch-ai\ngit submodule update --init --recursive" },
-  { n: 2, title: "Run setup", body: "Run setup.bat in PowerShell. Downloads OpenCode and the Handy voice model.", code: ".\\setup.bat" },
-  { n: 3, title: "Launch Glitch", body: "Pick a profile (or create a new one) and you're in.", code: ".\\launch-glitch.bat" },
-  { n: 4, title: "Start chatting", body: "Type or press Ctrl+Space for voice. Glitch remembers it next time.", code: "Hi Glitch \u2014 help me build a thing." },
+const WINDOWS_ZIP = [
+  { n: 1, title: "Download Glitch", body: "Download the latest release zip and extract it anywhere.", code: "Download from glitch-ai.com\nor grab the ZIP from GitHub" },
+  { n: 2, title: "Launch Glitch", body: "Double-click launch-glitch.bat. First run auto-downloads Node.js and all dependencies.", code: ".\\launch-glitch.bat" },
+  { n: 3, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
 ];
 
-const MAC_LINUX = [
+const WINDOWS_GIT = [
+  { n: 1, title: "Clone the repo", body: "Grab the launcher repo.", code: "git clone https://github.com/Cothek/glitch-ai.git\ncd glitch-ai\ngit submodule update --init --recursive" },
+  { n: 2, title: "Run setup", body: "Downloads OpenCode and the Handy voice model.", code: ".\\scripts\\setup.ps1" },
+  { n: 3, title: "Launch Glitch", body: "Pick a profile (or create a new one) and you're in.", code: ".\\launch-glitch.bat" },
+  { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
+];
+
+const UNIX_ZIP = [
+  { n: 1, title: "Download Glitch", body: "Download the latest release zip and extract it anywhere.", code: "Download from glitch-ai.com\nor grab the ZIP from GitHub" },
+  { n: 2, title: "Install Node.js", body: "Make sure Node.js 22+ is installed (not auto-bootstrapped on Mac/Linux).", code: "Install from https://nodejs.org" },
+  { n: 3, title: "Launch Glitch", body: "Open a terminal in the folder and run the shell launcher.", code: "./launch-glitch.sh" },
+  { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
+];
+
+const UNIX_GIT = [
   { n: 1, title: "Clone the repo", body: "Grab the launcher repo and its submodules.", code: "git clone https://github.com/Cothek/glitch-ai.git\ncd glitch-ai\ngit submodule update --init --recursive" },
-  { n: 2, title: "Install dependencies", body: "Make sure Node.js 22+ is installed. The Node.js launcher handles everything.", code: "node scripts/launch.mjs" },
-  { n: 3, title: "Launch Glitch", body: "Use the shell wrapper or run the MJS script directly.", code: "./launch-glitch.sh" },
-  { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers next time.", code: "Hi Glitch \u2014 help me build a thing." },
+  { n: 2, title: "Install Node.js", body: "Make sure Node.js 22+ is installed.", code: "Install from https://nodejs.org" },
+  { n: 3, title: "Launch Glitch", body: "Use the shell wrapper.", code: "./launch-glitch.sh" },
+  { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
 ];
 
 function TabButton({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
@@ -42,16 +55,22 @@ function TabButton({ active, label, onClick }: { active: boolean; label: string;
 
 export function Install() {
   const [tab, setTab] = useState<"win" | "unix">("win");
-  const steps = tab === "win" ? WINDOWS : MAC_LINUX;
+  const [method, setMethod] = useState<"zip" | "git">("zip");
+
+  const steps =
+    tab === "win"
+      ? method === "zip" ? WINDOWS_ZIP : WINDOWS_GIT
+      : method === "zip" ? UNIX_ZIP : UNIX_GIT;
+
   const shellLabel = tab === "win" ? "powershell" : "bash";
 
   return (
     <section id="install" className="border-b border-border py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-6">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">Install in 30 seconds</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-accent">Pick your path. Done in minutes.</p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-            Four steps. Zero configuration.
+            Install Glitch
           </h2>
           <p className="mt-4 text-text-muted">
             Windows, macOS, and Linux all work. Pick your platform below.
@@ -64,7 +83,38 @@ export function Install() {
           <TabButton active={tab === "unix"} label="macOS / Linux" onClick={() => setTab("unix")} />
         </div>
 
-        <ol className="mt-8 space-y-6">
+        {/* Method toggle */}
+        <div className="mx-auto mt-4 flex max-w-xs items-center justify-center gap-2">
+          <button
+            onClick={() => setMethod("zip")}
+            className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-sm font-medium transition-all ${
+              method === "zip"
+                ? "border-accent bg-accent-soft text-accent"
+                : "border-border bg-bg-elevated/40 text-text-muted hover:text-text hover:border-text-dim"
+            }`}
+          >
+            <IconDownload className="h-4 w-4" />
+            Download ZIP
+          </button>
+          <span className="text-xs text-text-dim">or</span>
+          <button
+            onClick={() => setMethod("git")}
+            className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-sm font-medium transition-all ${
+              method === "git"
+                ? "border-accent bg-accent-soft text-accent"
+                : "border-border bg-bg-elevated/40 text-text-muted hover:text-text hover:border-text-dim"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="18" cy="18" r="3" />
+              <circle cx="6" cy="6" r="3" />
+              <path d="M6 21V9a3 3 0 0 1 3-3h6" />
+            </svg>
+            Git Clone
+          </button>
+        </div>
+
+        <ol className="mt-6 space-y-6">
           {steps.map((step) => (
             <li
               key={step.n}
@@ -100,13 +150,12 @@ export function Install() {
         <div className="mt-8 rounded-lg border border-border bg-bg-code/60 p-4 text-sm">
           <p className="text-text-muted">
             <strong className="text-text">Prerequisites:</strong>{" "}
-            <a href="https://git-scm.com/downloads" className="text-accent hover:underline">Git</a>
-            {" and "}
+            Git and Node.js 22+ for the Git path.{" "}
+            Windows ZIP download{" "}
+            <a href="https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip" className="text-accent hover:underline">auto-bootstraps Node.js</a>
+            {" \u2014 Mac/Linux ZIP needs "}
             <a href="https://nodejs.org" className="text-accent hover:underline">Node.js 22+</a>
-            {". "}
-            No Git? Grab the{" "}
-            <a href="https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip" className="text-accent hover:underline">ZIP from GitHub</a>
-            {" \u2014 you'll need Git later for updates."}
+            {" installed manually."}
           </p>
         </div>
 
