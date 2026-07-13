@@ -1,12 +1,16 @@
-import { IconDownload, IconGithub, IconCheck } from "@/components/icons";
+import { CopyButton } from "@/components/copy-button";
+import { IconGithub, IconCheck } from "@/components/icons";
 
 const REQUIREMENTS = [
   "Windows 10+, macOS 13+, or Linux (x86_64)",
   "Node.js 22+ (required for the cross-platform launcher)",
   "API key for an LLM provider (OpenAI, Anthropic, etc.)",
-  "Git (for cloning — or download the ZIP below)",
+  "Git (required for installation)",
   "~500 MB disk (after bootstrap downloads OpenCode + Handy)",
 ];
+
+const WINDOWS_INSTALL = "irm https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.ps1 | iex";
+const UNIX_INSTALL = "curl -sL https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.sh | bash";
 
 export function Download() {
   return (
@@ -24,26 +28,66 @@ export function Download() {
           />
 
           <div className="relative">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent">Download</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent">Install</p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
               Get Glitch on your machine.
             </h2>
             <p className="mt-3 max-w-xl text-text-muted">
-              Free, open source, your data stays local. The download is a small archive — the first run downloads the OpenCode binary and Handy voice model on demand.
+              Free, open source, your data stays local. One command downloads the install script, checks prerequisites, clones the repo, and bootstraps everything automatically.
             </p>
 
-            {/* Download button */}
-            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <a
-                href="https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip"
-                download
-                className="group inline-flex h-14 items-center gap-3 rounded-full bg-accent px-7 text-base font-semibold text-bg shadow-[0_0_30px_var(--color-accent-soft)] transition-all hover:scale-[1.02] hover:bg-accent-hover hover:shadow-[0_0_50px_var(--color-accent-soft)]"
-              >
-                <IconDownload className="h-5 w-5" />
-                Download Glitch
-                <span className="font-mono text-xs opacity-70">(repackaged as ZIP by GitHub)</span>
-              </a>
+            {/* Install script code blocks */}
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
+              {/* Windows */}
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">Windows (PowerShell)</p>
+                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                  <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
+                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M4 21h16M4 12h16M4 3h16" />
+                      </svg>
+                      powershell
+                    </div>
+                    <CopyButton text={WINDOWS_INSTALL} />
+                  </div>
+                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{WINDOWS_INSTALL}</code>
+                  </pre>
+                </div>
+              </div>
 
+              {/* macOS / Linux */}
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">macOS / Linux (bash)</p>
+                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                  <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
+                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M4 21h16M4 12h16M4 3h16" />
+                      </svg>
+                      bash
+                    </div>
+                    <CopyButton text={UNIX_INSTALL} />
+                  </div>
+                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{UNIX_INSTALL}</code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-text-dim">
+              <span>~1 KB (install script)</span>
+              <span aria-hidden>·</span>
+              <span>Free, MIT-style license</span>
+              <span aria-hidden>·</span>
+              <span>No telemetry</span>
+            </div>
+
+            {/* Star on GitHub */}
+            <div className="mt-8">
               <a
                 href="https://github.com/Cothek/glitch-ai"
                 target="_blank"
@@ -53,15 +97,6 @@ export function Download() {
                 <IconGithub className="h-4 w-4" />
                 Star on GitHub
               </a>
-            </div>
-
-            {/* Stats */}
-            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-text-dim">
-              <span>~2 MB (main repo ZIP)</span>
-              <span aria-hidden>·</span>
-              <span>Free, MIT-style license</span>
-              <span aria-hidden>·</span>
-              <span>No telemetry</span>
             </div>
 
             {/* Requirements */}

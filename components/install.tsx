@@ -2,26 +2,25 @@
 
 import { useState } from "react";
 import { CopyButton } from "@/components/copy-button";
-import { IconTerminal, IconCheck, IconDownload } from "@/components/icons";
+import { IconTerminal, IconCheck } from "@/components/icons";
 
-const WINDOWS_ZIP = [
-  { n: 1, title: "Download Glitch", body: "Download the latest release zip and extract it anywhere.", code: "Download from glitch-ai.com\nor grab the ZIP from GitHub" },
-  { n: 2, title: "Launch Glitch", body: "Double-click launch-glitch.bat. First run auto-downloads Node.js and all dependencies.", code: ".\\launch-glitch.bat" },
-  { n: 3, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
+const WINDOWS_SCRIPT = [
+  { n: 1, title: "Run the installer", body: "One command in PowerShell — downloads the script and runs it.", code: "irm https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.ps1 | iex" },
+  { n: 2, title: "Follow the prompts", body: "The script checks prerequisites, clones the repo, and bootstraps Node.js, OpenCode, and tools automatically.", code: "Installing...\n✓ Git: git version 2.45.0\n✓ Cloned to ~/glitch-ai\n✓ Bootstrap complete" },
+  { n: 3, title: "Start chatting", body: "Glitch launches with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
 ];
 
 const WINDOWS_GIT = [
-  { n: 1, title: "Clone the repo", body: "Grab the launcher repo.", code: "git clone https://github.com/Cothek/glitch-ai.git\ncd glitch-ai\ngit submodule update --init --recursive" },
+  { n: 1, title: "Clone the repo", body: "Or use the install script above for a guided setup. Manually:", code: "git clone https://github.com/Cothek/glitch-ai.git\ncd glitch-ai\ngit submodule update --init --recursive" },
   { n: 2, title: "Run setup", body: "Downloads OpenCode and the Handy voice model.", code: ".\\scripts\\setup.ps1" },
   { n: 3, title: "Launch Glitch", body: "Pick a profile (or create a new one) and you're in.", code: ".\\launch-glitch.bat" },
   { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
 ];
 
-const UNIX_ZIP = [
-  { n: 1, title: "Download Glitch", body: "Download the latest release zip and extract it anywhere.", code: "Download from glitch-ai.com\nor grab the ZIP from GitHub" },
-  { n: 2, title: "Install Node.js", body: "Make sure Node.js 22+ is installed (not auto-bootstrapped on Mac/Linux).", code: "Install from https://nodejs.org" },
-  { n: 3, title: "Launch Glitch", body: "Open a terminal in the folder and run the shell launcher.", code: "./launch-glitch.sh" },
-  { n: 4, title: "Start chatting", body: "Glitch introduces itself with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
+const UNIX_SCRIPT = [
+  { n: 1, title: "Run the installer", body: "One command in terminal \u2014 downloads and runs it.", code: "curl -sL https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.sh | bash" },
+  { n: 2, title: "Follow the prompts", body: "The script clones the repo, checks for Node.js, and gets you set up.", code: "Installing...\n✓ Git: git version 2.45.0\n✓ Cloned to ~/glitch-ai\n✓ Ready" },
+  { n: 3, title: "Start chatting", body: "Glitch launches with a session brief and remembers you next time.", code: "Hi Glitch \u2014 help me build a thing." },
 ];
 
 const UNIX_GIT = [
@@ -55,12 +54,12 @@ function TabButton({ active, label, onClick }: { active: boolean; label: string;
 
 export function Install() {
   const [tab, setTab] = useState<"win" | "unix">("win");
-  const [method, setMethod] = useState<"zip" | "git">("zip");
+  const [method, setMethod] = useState<"script" | "git">("script");
 
   const steps =
     tab === "win"
-      ? method === "zip" ? WINDOWS_ZIP : WINDOWS_GIT
-      : method === "zip" ? UNIX_ZIP : UNIX_GIT;
+      ? method === "script" ? WINDOWS_SCRIPT : WINDOWS_GIT
+      : method === "script" ? UNIX_SCRIPT : UNIX_GIT;
 
   const shellLabel = tab === "win" ? "powershell" : "bash";
 
@@ -86,15 +85,19 @@ export function Install() {
         {/* Method toggle */}
         <div className="mx-auto mt-4 flex max-w-xs items-center justify-center gap-2">
           <button
-            onClick={() => setMethod("zip")}
+            onClick={() => setMethod("script")}
             className={`flex items-center gap-1.5 rounded-lg border px-4 py-2 text-sm font-medium transition-all ${
-              method === "zip"
+              method === "script"
                 ? "border-accent bg-accent-soft text-accent"
                 : "border-border bg-bg-elevated/40 text-text-muted hover:text-text hover:border-text-dim"
             }`}
           >
-            <IconDownload className="h-4 w-4" />
-            Download ZIP
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+            Install Script
           </button>
           <span className="text-xs text-text-dim">or</span>
           <button
@@ -150,12 +153,10 @@ export function Install() {
         <div className="mt-8 rounded-lg border border-border bg-bg-code/60 p-4 text-sm">
           <p className="text-text-muted">
             <strong className="text-text">Prerequisites:</strong>{" "}
-            Git and Node.js 22+ for the Git path.{" "}
-            Windows ZIP download{" "}
-            <a href="https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip" className="text-accent hover:underline">auto-bootstraps Node.js</a>
-            {" \u2014 Mac/Linux ZIP needs "}
+            Git and Node.js 22+ for the Git path. The install script checks and
+            bootstraps Node.js automatically on Windows; on macOS/Linux, ensure
             <a href="https://nodejs.org" className="text-accent hover:underline">Node.js 22+</a>
-            {" installed manually."}
+            is installed first.
           </p>
         </div>
 
