@@ -294,28 +294,6 @@ export default function SkillsPage() {
     <>
       <Nav />
       <main>
-        {/* Sub-nav */}
-        <nav
-          className="sticky top-14 z-40 border-b border-border bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/60"
-          aria-label="Skills page navigation"
-        >
-          <div className="mx-auto max-w-6xl px-6 py-3">
-            <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-xs text-text-muted">
-              <a href="#skills" className="transition-colors hover:text-text">
-                Skills
-              </a>
-              <span aria-hidden>·</span>
-              <a href="#agents" className="transition-colors hover:text-text">
-                Agents
-              </a>
-              <span aria-hidden>·</span>
-              <a href="#commands" className="transition-colors hover:text-text">
-                Commands
-              </a>
-            </div>
-          </div>
-        </nav>
-
         {/* Section 1: Skills Catalog */}
         <section id="skills" className="border-b border-border py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-6">
