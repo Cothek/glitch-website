@@ -12,13 +12,10 @@ export function Nav() {
         </Link>
 
         <div className="hidden items-center gap-6 text-sm text-text-muted sm:flex">
-          <a href="#features" className="transition-colors hover:text-text">Features</a>
-          <a href="#skills" className="transition-colors hover:text-text">Skills</a>
-          <a href="#showcase" className="transition-colors hover:text-text">Showcase</a>
+          <a href="#why" className="transition-colors hover:text-text">Why Glitch</a>
           <a href="#architecture" className="transition-colors hover:text-text">Architecture</a>
+          <a href="/skills" className="transition-colors hover:text-text">Skills</a>
           <a href="#install" className="transition-colors hover:text-text">Install</a>
-          <a href="#providers" className="transition-colors hover:text-text">Providers</a>
-          <a href="#network" className="transition-colors hover:text-text">Access</a>
         </div>
 
         <div className="flex items-center gap-2">
@@ -32,7 +29,7 @@ export function Nav() {
             Star
           </a>
           <a
-            href="#download"
+            href="#install"
             className="inline-flex h-9 items-center gap-1.5 rounded-full bg-accent px-3 text-xs font-semibold text-bg transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_var(--color-accent-soft)]"
           >
             <IconDownload className="h-3.5 w-3.5" />

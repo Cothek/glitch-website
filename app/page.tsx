@@ -1,14 +1,175 @@
-﻿import { Hero } from "@/components/hero";
-import { Features } from "@/components/features";
-import { Showcase } from "@/components/showcase";
-import { Architecture } from "@/components/architecture";
-import { Install } from "@/components/install";
-import { Providers } from "@/components/providers";
-import { Network } from "@/components/network";
-import { Skills } from "@/components/skills";
-import { Download } from "@/components/download";
-import { Footer } from "@/components/footer";
+﻿"use client";
+
+import Link from "next/link";
 import { Nav } from "@/components/nav";
+import { Hero } from "@/components/hero";
+import { Footer } from "@/components/footer";
+import { Terminal, TerminalLine, TerminalPrompt } from "@/components/terminal";
+import { CopyButton } from "@/components/copy-button";
+import {
+  IconBrain,
+  IconSparkles,
+  IconMic,
+  IconFolder,
+  IconLock,
+  IconServer,
+  IconCheck,
+  IconGithub,
+  IconZap,
+  IconKey,
+  IconRoute,
+  IconTerminal,
+  IconDownload,
+} from "@/components/icons";
+
+const ACCENT_CLASS = {
+  purple: "text-accent bg-accent-soft border-accent/20",
+  accent: "text-accent-2 bg-accent-2-soft border-accent-2/20",
+};
+
+const ACCENT = {
+  accent: {
+    iconBg: "bg-accent-2-soft text-accent-2 border-accent-2/30",
+    badgeBg: "bg-accent-2-soft text-accent-2",
+  },
+  purple: {
+    iconBg: "bg-accent-soft text-accent border-accent/30",
+    badgeBg: "bg-accent-soft text-accent",
+  },
+  amber: {
+    iconBg: "bg-amber/10 text-amber border-amber/30",
+    badgeBg: "bg-amber/10 text-amber",
+  },
+};
+
+const WHY_FEATURES = [
+  {
+    icon: IconBrain,
+    title: "Memory that persists",
+    body: "Glitch remembers conversations, decisions, and projects across sessions. Start a task today, pick it up tomorrow with full context.",
+    accent: "purple" as const,
+  },
+  {
+    icon: IconSparkles,
+    title: "Skills + agents that do the work",
+    body: "30+ built-in skills — code review, testing, design, debugging. Glitch routes each task to the right skill and dispatches sub-agents in parallel.",
+    accent: "accent" as const,
+  },
+  {
+    icon: IconMic,
+    title: "Voice or text",
+    body: "Push-to-talk with offline voice-to-text, or type. Glitch adapts to how you work best.",
+    accent: "purple" as const,
+  },
+];
+
+const ARCH_LAYERS = [
+  {
+    icon: IconFolder,
+    title: "Engine",
+    text: "Core identity, 30+ skills, prompt rules, plugin system. Open source.",
+    accent: "purple" as const,
+  },
+  {
+    icon: IconLock,
+    title: "User Data",
+    text: "Your profile, session history, decisions, diary. Private repo, yours alone.",
+    accent: "accent" as const,
+  },
+  {
+    icon: IconServer,
+    title: "Launcher",
+    text: "Setup scripts, config templates, validation tools. Portable, cross-platform.",
+    accent: "purple" as const,
+  },
+];
+
+const PROVIDERS = [
+  {
+    label: "NVIDIA",
+    sublabel: "free",
+    icon: IconZap,
+    accent: "accent" as const,
+    description: "NVIDIA free endpoint. No credit card needed.",
+    steps: [
+      {
+        n: 1,
+        title: "Connect NVIDIA provider",
+        body: "In OpenCode, run /connect and select NVIDIA. Authenticate with your NVIDIA account.",
+        code: "/connect\n# Select NVIDIA from the list\n# Follow the OAuth flow in your browser",
+      },
+      {
+        n: 2,
+        title: "Set as default model",
+        body: "Add the NVIDIA model to your agent config in opencode.json.",
+        code: '"model": "nvidia/z-ai/glm-5.1"',
+      },
+    ],
+  },
+  {
+    label: "OpenCode Go",
+    sublabel: "free trial",
+    icon: IconKey,
+    accent: "purple" as const,
+    description: "OpenCode Go managed API. Pay-per-token from $0.14/1M input.",
+    steps: [
+      {
+        n: 1,
+        title: "Create an account",
+        body: "Sign up at opencode.ai and add billing information.",
+        code: "# Visit https://opencode.ai\n# Create account \u2192 Add billing",
+      },
+      {
+        n: 2,
+        title: "Connect OpenCode Go",
+        body: "Get your API key from the dashboard, then connect in the TUI.",
+        code: "/connect\n# Select OpenCode Go\n# Paste your API key",
+      },
+      {
+        n: 3,
+        title: "Set as default model",
+        body: "Add the OpenCode Go model to your agent config.",
+        code: '"model": "opencode-go/deepseek-v4-flash"',
+      },
+    ],
+  },
+  {
+    label: "OpenRouter",
+    sublabel: "pay-per-use",
+    icon: IconRoute,
+    accent: "amber" as const,
+    description: "Route to 200+ models. One API key.",
+    steps: [
+      {
+        n: 1,
+        title: "Create an account",
+        body: "Sign up at openrouter.ai and add credits.",
+        code: "# Visit https://openrouter.ai\n# Create account \u2192 Add credits",
+      },
+      {
+        n: 2,
+        title: "Set your API key",
+        body: "Get your API key from the dashboard and set the environment variable.",
+        code: "set OPENROUTER_API_KEY=sk-or-...",
+      },
+      {
+        n: 3,
+        title: "Configure in opencode.json",
+        body: "Add the OpenRouter base URL and API key reference to your provider config.",
+        code: '"baseURL": "https://openrouter.ai/api/v1"\n"apiKey": "${OPENROUTER_API_KEY}"',
+      },
+    ],
+  },
+];
+
+const WINDOWS_INSTALL = "irm https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.ps1 | iex";
+const UNIX_INSTALL = "curl -sL https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.sh | bash";
+
+const REQUIREMENTS = [
+  "Windows 10+ / macOS 13+ / Linux",
+  "Node.js 22+",
+  "~500 MB disk",
+];
 
 export default function Home() {
   return (
@@ -16,16 +177,268 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Features />
-        <Skills />
-        <Showcase />
-        <Architecture />
-        <Install />
-        <Providers />
-        <Network />
-        <Download />
+
+        {/* Why Glitch */}
+        <section id="why" className="border-b border-border py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <header className="mx-auto max-w-2xl text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                What makes Glitch different
+              </p>
+              <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+                Not another chatbot. A companion that grows with you.
+              </h2>
+              <p className="mt-4 text-text-muted">
+                Most AI tools forget everything between sessions. Glitch is built on the opposite idea: memory, context, and continuity are the product.
+              </p>
+            </header>
+
+            <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {WHY_FEATURES.map((f) => {
+                const Icon = f.icon;
+                return (
+                  <li
+                    key={f.title}
+                    className="hover-lift group relative rounded-lg border border-border bg-bg-elevated/40 p-5"
+                  >
+                    <div
+                      className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md border ${ACCENT_CLASS[f.accent]}`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-base font-semibold tracking-tight">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text-muted">{f.body}</p>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-12">
+              <Terminal title="glitch" className="max-w-3xl mx-auto">
+                <TerminalPrompt>$ glitch</TerminalPrompt>
+                <TerminalLine>
+                  <span className="dim">Glitch AI v1.0</span> — <span className="dim">your personal companion</span>
+                  {"\n\n"}
+                  <span className="prompt-text">💜 Good morning! </span>
+                  <span className="dim">8:42 AM on Sunday, June 1st, 2026</span>
+                  {"\n"}
+                  <span className="dim">Glitch is energized and ready for a productive day together.</span>
+                  {"\n\n"}
+                </TerminalLine>
+
+                <TerminalPrompt user />
+                <TerminalLine>
+                  <span className="prompt-text">build me a beautiful website to share glitch with my friends</span>
+                </TerminalLine>
+
+                <TerminalLine>
+                  <span className="prompt-text">on it. let me think through this:</span>
+                  {"\n\n"}
+                </TerminalLine>
+
+                <TerminalLine>
+                  <span className="dim">▸ plan</span> <span className="dim">·</span> <span className="prompt-text">shape → tokens → motion → ship</span>
+                  {"\n"}
+                  <span className="dim">▸ scaffold</span> <span className="dim">·</span> <span className="prompt-text">Next.js 15 + Tailwind v4 at </span><code>glitch-website/</code>
+                  {"\n"}
+                  <span className="dim">▸ design</span> <span className="dim">·</span> <span className="prompt-text">anti-slop + scan-line hero, dark theme</span>
+                  {"\n"}
+                  <span className="dim">▸ ship</span> <span className="dim">·</span> <span className="prompt-text">Vercel deploy + ZIP download endpoint</span>
+                  {"\n\n"}
+                  <span className="dim">running ~5 sub-agents in parallel...</span>
+                  {"\n\n"}
+                </TerminalLine>
+
+                <TerminalLine>
+                  <span className="text-green-500">✓</span> <span className="prompt-text">design tokens · </span><span className="dim">1.2s</span>
+                  {"\n"}
+                  <span className="text-green-500">✓</span> <span className="prompt-text">hero + features · </span><span className="dim">4.8s</span>
+                  {"\n"}
+                  <span className="text-green-500">✓</span> <span className="prompt-text">download endpoint · </span><span className="dim">2.1s</span>
+                  {"\n"}
+                  <span className="text-green-500">✓</span> <span className="prompt-text">vercel deploy · </span><span className="dim">8.3s</span>
+                  {"\n\n"}
+                  <span className="prompt-text">live at </span><span className="text-accent-2">https://glitch-ai.vercel.app</span>
+                  {"\n"}
+                  <span className="prompt-text cursor-blink">█</span>
+                </TerminalLine>
+              </Terminal>
+            </div>
+          </div>
+        </section>
+
+        {/* Architecture */}
+        <section id="architecture" className="border-b border-border py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <header className="mx-auto max-w-2xl text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-accent-2">
+                How it&apos;s built
+              </p>
+              <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+                Three layers. One mental model.
+              </h2>
+              <p className="mt-4 text-text-muted">
+                Engine and launcher are public. Your data lives in its own private repo.
+              </p>
+            </header>
+
+            <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+              {ARCH_LAYERS.map((layer) => {
+                const Icon = layer.icon;
+                const a = ACCENT[layer.accent];
+                return (
+                  <div
+                    key={layer.title}
+                    className="hover-lift relative rounded-lg border border-border bg-bg-elevated/40 p-6"
+                  >
+                    <div className={`inline-flex h-10 w-10 items-center justify-center rounded-md border ${a.iconBg}`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold tracking-tight">{layer.title}</h3>
+                    <p className="mt-1 text-sm text-text-muted">{layer.text}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Install & Download */}
+        <section id="install" className="border-b border-border py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <header className="mx-auto max-w-2xl text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                Get started
+              </p>
+              <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+                One command, and you&apos;re in.
+              </h2>
+              <p className="mt-4 text-text-muted">
+                Free, open source, your data stays local.
+              </p>
+            </header>
+
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-start">
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
+                  Windows (PowerShell)
+                </p>
+                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                  <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
+                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M4 21h16M4 12h16M4 3h16" />
+                      </svg>
+                      powershell
+                    </div>
+                    <CopyButton text={WINDOWS_INSTALL} />
+                  </div>
+                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{WINDOWS_INSTALL}</code>
+                  </pre>
+                </div>
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
+                  macOS / Linux (bash)
+                </p>
+                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                  <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
+                      <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M4 21h16M4 12h16M4 3h16" />
+                      </svg>
+                      bash
+                    </div>
+                    <CopyButton text={UNIX_INSTALL} />
+                  </div>
+                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{UNIX_INSTALL}</code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-text-dim">
+              {REQUIREMENTS.map((req, i) => (
+                <span key={req} className="flex items-center gap-1.5">
+                  {i > 0 && <span aria-hidden>·</span>}
+                  {req}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-16">
+              <header className="mx-auto max-w-2xl text-center">
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-2">
+                  Pick your free AI provider
+                </p>
+                <h3 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
+                  Three paths. Start free, scale up.
+                </h3>
+              </header>
+
+              <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+                {PROVIDERS.map((provider) => {
+                  const Icon = provider.icon;
+                  const a = ACCENT[provider.accent];
+                  return (
+                    <div
+                      key={provider.label}
+                      className="hover-lift relative flex flex-col rounded-lg border border-border bg-bg-elevated/40 p-6"
+                    >
+                      <div className="mb-4 flex items-center justify-between">
+                        <div className={`inline-flex h-10 w-10 items-center justify-center rounded-md border ${a.iconBg}`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className={`rounded-full px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider ${a.badgeBg}`}>
+                          {provider.sublabel}
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg font-semibold tracking-tight">{provider.label}</h3>
+                      <p className="mt-1 text-sm text-text-muted">{provider.description}</p>
+
+                      <ol className="mt-5 flex-1 space-y-4">
+                        {provider.steps.map((step) => (
+                          <li key={step.n}>
+                            <div className="flex items-center gap-2">
+                              <span className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold ${a.badgeBg}`}>
+                                {step.n}
+                              </span>
+                              <h4 className="text-sm font-semibold tracking-tight">{step.title}</h4>
+                            </div>
+                            <p className="mt-1 pl-8 text-xs text-text-muted">{step.body}</p>
+                            <div className="relative mt-2 overflow-hidden rounded-md border border-border bg-bg-code">
+                              <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
+                                <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
+                                  <IconTerminal className="h-3 w-3" />
+                                  powershell
+                                </div>
+                                <CopyButton text={step.code} />
+                              </div>
+                              <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                                <code>{step.code}</code>
+                              </pre>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <p className="mt-10 text-center text-sm text-text-muted">
+                Works offline, on your LAN, or anywhere. Full setup guide on GitHub.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }
