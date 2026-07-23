@@ -10,7 +10,7 @@ type Category = {
   id: string;
   label: string;
   icon: typeof IconTerminal;
-  accent: "purple" | "cyan";
+  accent: "purple" | "accent";
   skills: Skill[];
 };
 
@@ -32,7 +32,7 @@ const DESIGN_SKILLS: Category = {
   id: "design",
   label: "Design & UI",
   icon: IconSparkles,
-  accent: "cyan",
+  accent: "accent",
   skills: [
     { name: "ui-craft", desc: "Anti-slop design taste with motion system, layout and typography patterns, and 22 domain references.", triggers: ["make this not look AI-generated", "design taste", "craft"] },
     { name: "ui-design", desc: "Senior UI and visual design with anti-slop rules and motion system integration.", triggers: ["make this look better", "improve the UI", "design this"] },
@@ -59,7 +59,7 @@ const SYSTEM_SKILLS: Category = {
   id: "system",
   label: "System & Automation",
   icon: IconZap,
-  accent: "cyan",
+  accent: "accent",
   skills: [
     { name: "auto-commit", desc: "Structured git commits with technical changes and session context sections.", triggers: ["commit", "save changes", "git commit"] },
     { name: "dev-loop", desc: "Autonomous dev loop: Write, Review, Build, Interact, Verify, Iterate.", triggers: ["build this feature", "run the dev loop", "autonomous mode"] },
@@ -104,7 +104,7 @@ const AGENTS = [
 
 const ACCENT_CLASSES = {
   purple: { icon: "bg-accent-soft text-accent border-accent/20", label: "text-accent" },
-  cyan: { icon: "bg-cyan-soft text-cyan border-cyan/20", label: "text-cyan" },
+  accent: { icon: "bg-accent-2-soft text-accent-2 border-accent-2/20", label: "text-accent-2" },
 };
 
 export function Skills() {
@@ -198,7 +198,7 @@ export function Skills() {
                   i < AGENTS.length - 1 ? "border-b border-border" : ""
                 }`}
               >
-                <span className="col-span-2 font-mono text-sm font-semibold text-cyan">
+                <span className="col-span-2 font-mono text-sm font-semibold text-accent-2">
                   {agent.name}
                 </span>
                 <span className="col-span-3 font-mono text-xs text-text-dim break-all">

@@ -24,7 +24,7 @@ export function Download() {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -bottom-20 right-0 h-40 max-w-xs bg-cyan opacity-10 blur-3xl"
+            className="pointer-events-none absolute inset-x-0 -bottom-20 right-0 h-40 max-w-xs bg-accent-2 opacity-10 blur-3xl"
           />
 
           <div className="relative">
@@ -117,7 +117,7 @@ export function Download() {
               <p className="text-text-muted">
                 <strong className="text-text">Prefer git?</strong> Clone directly from GitHub — same content, always up to date.
               </p>
-              <pre className="mt-3 overflow-x-auto rounded-md bg-bg/60 p-3 font-mono text-xs text-cyan">
+              <pre className="mt-3 overflow-x-auto rounded-md bg-bg/60 p-3 font-mono text-xs text-accent-2">
                 <code>git clone https://github.com/Cothek/glitch-ai.git</code>
               </pre>
               <p className="mt-3 text-text-dim text-xs">

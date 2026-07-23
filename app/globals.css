@@ -19,11 +19,14 @@
   --color-text-dim: #555570;
 
   /* Brand */
-  --color-accent: #a855f7;
-  --color-accent-hover: #c084fc;
-  --color-accent-soft: rgba(168, 85, 247, 0.15);
-  --color-cyan: #22d3ee;
-  --color-cyan-soft: rgba(34, 211, 238, 0.12);
+  --color-accent: #FF3131;
+  --color-accent-hover: #FF5530;
+  --color-accent-soft: rgba(255, 49, 49, 0.15);
+  /* Red/orange accent scheme */
+  --color-accent-2: #FF5530;
+  --color-accent-2-soft: rgba(255, 85, 48, 0.12);
+  --color-accent-3: #FF30AC;
+  --color-accent-3-soft: rgba(255, 48, 172, 0.15);
   --color-green: #22c55e;
   --color-amber: #f59e0b;
   --color-red: #ef4444;
@@ -70,22 +73,113 @@ body {
   color: var(--color-text);
 }
 
+/* ===== Custom scrollbars ===== */
+/* Firefox - use :root for higher specificity than universal selector */
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+/* WebKit/Blink - global fallback */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Specific scrollable elements - ensure styles apply and prevent layout shift */
+pre,
+.terminal-body,
+[class*="overflow"],
+[class*="scroll"] {
+  scrollbar-gutter: stable;
+}
+
+pre::-webkit-scrollbar,
+.terminal-body::-webkit-scrollbar,
+[class*="overflow"]::-webkit-scrollbar,
+[class*="scroll"]::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+pre::-webkit-scrollbar-track,
+.terminal-body::-webkit-scrollbar-track,
+[class*="overflow"]::-webkit-scrollbar-track,
+[class*="scroll"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb,
+.terminal-body::-webkit-scrollbar-thumb,
+[class*="overflow"]::-webkit-scrollbar-thumb,
+[class*="scroll"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+pre::-webkit-scrollbar-thumb:hover,
+.terminal-body::-webkit-scrollbar-thumb:hover,
+[class*="overflow"]::-webkit-scrollbar-thumb:hover,
+[class*="scroll"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Firefox specific selectors for scrollable elements */
+pre,
+.terminal-body,
+[class*="overflow"],
+[class*="scroll"] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
 /* ===== Custom utilities ===== */
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #c084fc 0%, #22d3ee 100%);
+    background: linear-gradient(
+        135deg,
+        var(--color-accent) 0%,
+        var(--color-accent-2) 25%,
+        var(--color-accent-3) 50%,
+        var(--color-accent-2) 75%,
+        var(--color-accent) 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite;
+    will-change: background-position;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
-  .glow-purple {
-    text-shadow: 0 0 30px rgba(168, 85, 247, 0.4), 0 0 60px rgba(34, 211, 238, 0.15);
+  .glow-accent {
+    text-shadow:
+        0 0 30px rgba(255, 49, 49, 0.4),
+        0 0 60px rgba(255, 85, 48, 0.15),
+        0 0 90px rgba(255, 48, 172, 0.1);
   }
 
   .frosted {
@@ -123,12 +217,16 @@ body {
   will-change: opacity;
 }
 
-.vscan-line.purple {
-  background: linear-gradient(180deg, transparent 0%, rgba(168, 85, 247, 0.5) 15%, rgba(168, 85, 247, 0.8) 50%, rgba(168, 85, 247, 0.5) 85%, transparent 100%);
+.vscan-line.primary {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 49, 49, 0.6) 15%, rgba(255, 49, 49, 0.85) 50%, rgba(255, 49, 49, 0.6) 85%, transparent 100%);
 }
 
-.vscan-line.cyan {
-  background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.4) 15%, rgba(34, 211, 238, 0.7) 50%, rgba(34, 211, 238, 0.4) 85%, transparent 100%);
+.vscan-line.secondary {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 85, 48, 0.5) 15%, rgba(255, 85, 48, 0.75) 50%, rgba(255, 85, 48, 0.5) 85%, transparent 100%);
+}
+
+.vscan-line.pink {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 48, 172, 0.55) 15%, rgba(255, 48, 172, 0.85) 50%, rgba(255, 48, 172, 0.55) 85%, transparent 100%);
 }
 
 /* ===== Cursor blink ===== */
@@ -219,7 +317,7 @@ body {
 }
 
 .terminal-body .prompt-symbol { color: var(--color-green); }
-.terminal-body .prompt-cmd { color: var(--color-cyan); }
+.terminal-body .prompt-cmd { color: var(--color-accent-2); }
 .terminal-body .prompt-text { color: var(--color-text); }
 .terminal-body .dim { color: var(--color-text-dim); }
 .terminal-body .accent { color: var(--color-accent); }
@@ -238,7 +336,7 @@ code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   background: var(--color-bg-surface);
-  color: var(--color-cyan);
+  color: var(--color-accent-2);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
 }

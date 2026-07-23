@@ -7,7 +7,7 @@ export function Showcase() {
         <div className="grid items-center gap-12 lg:grid-cols-5">
           {/* Text */}
           <div className="lg:col-span-2">
-            <p className="font-mono text-xs uppercase tracking-widest text-cyan">See it in action</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent-2">See it in action</p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
               A real session, not a staged demo.
             </h2>
@@ -20,7 +20,7 @@ export function Showcase() {
                 <span><strong className="text-text">Memory updates</strong> happen automatically — preferences, decisions, and patterns are captured in real time.</span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyan" />
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-2" />
                 <span><strong className="text-text">Skill routing</strong> picks the right tool — code review, testing, design, debugging — for each step.</span>
               </li>
               <li className="flex gap-2">
@@ -76,7 +76,7 @@ export function Showcase() {
                 {"\n"}
                 <span className="text-green-500">✓</span> <span className="prompt-text">vercel deploy · </span><span className="dim">8.3s</span>
                 {"\n\n"}
-                <span className="prompt-text">live at </span><span className="text-cyan">https://glitch-ai.vercel.app</span>
+                <span className="prompt-text">live at </span><span className="text-accent-2">https://glitch-ai.vercel.app</span>
                 {"\n"}
                 <span className="prompt-text cursor-blink">█</span>
               </TerminalLine>

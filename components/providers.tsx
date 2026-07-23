@@ -6,7 +6,7 @@ const PROVIDERS = [
     label: 'NVIDIA',
     sublabel: 'free',
     icon: IconZap,
-    accent: 'cyan' as const,
+    accent: 'accent' as const,
     description:
       "NVIDIA free model endpoint — great for getting started. No credit card needed. Rate-limited but fully functional for personal use.",
     pricing: '$0 / month — rate-limited',
@@ -86,9 +86,9 @@ const PROVIDERS = [
 ]
 
 const ACCENT = {
-  cyan: {
-    iconBg: 'bg-cyan-soft text-cyan border-cyan/30',
-    badgeBg: 'bg-cyan-soft text-cyan',
+  accent: {
+    iconBg: 'bg-accent-2-soft text-accent-2 border-accent-2/30',
+    badgeBg: 'bg-accent-2-soft text-accent-2',
   },
   purple: {
     iconBg: 'bg-accent-soft text-accent border-accent/30',

@@ -11,7 +11,7 @@ const FEATURES = [
     icon: IconSparkles,
     title: "Skills that adapt",
     body: "20+ built-in skills — code review, testing, brainstorming, design, debugging. Glitch picks the right one for each task, or you can add your own.",
-    accent: "cyan" as const,
+    accent: "accent" as const,
   },
   {
     icon: IconUsers,
@@ -23,13 +23,13 @@ const FEATURES = [
     icon: IconMic,
     title: "Voice or text",
     body: "Push-to-talk with Handy offline voice-to-text. Speak your prompts hands-free, or type. Glitch adapts to how you work best.",
-    accent: "cyan" as const,
+    accent: "accent" as const,
   },
 ];
 
 const ACCENT_CLASS = {
   purple: "text-accent bg-accent-soft border-accent/20",
-  cyan: "text-cyan bg-cyan-soft border-cyan/20",
+  accent: "text-accent-2 bg-accent-2-soft border-accent-2/20",
 };
 
 export function Features() {

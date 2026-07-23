@@ -21,7 +21,7 @@ const TIERS = [
     label: "Local Network",
     sublabel: "private / LAN",
     icon: IconServer,
-    accent: "cyan" as const,
+    accent: "accent" as const,
     description:
       "Share Glitch with other devices on your home or office network. Still no internet required.",
     code: '.\\launch-glitch.bat --host',
@@ -72,10 +72,10 @@ const ACCENT = {
     badgeBg: "bg-green/10 text-green",
     border: "border-green/20",
   },
-  cyan: {
-    iconBg: "bg-cyan-soft text-cyan border-cyan/30",
-    badgeBg: "bg-cyan-soft text-cyan",
-    border: "border-cyan/20",
+  accent: {
+    iconBg: "bg-accent-2-soft text-accent-2 border-accent-2/30",
+    badgeBg: "bg-accent-2-soft text-accent-2",
+    border: "border-accent-2/20",
   },
   purple: {
     iconBg: "bg-accent-soft text-accent border-accent/30",

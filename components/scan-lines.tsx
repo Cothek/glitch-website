@@ -11,9 +11,10 @@ export function ScanLines({
   const lines = Array.from({ length: count }, (_, i) => {
     const delay = (i * 0.15) % 3;
     const duration = 1.5 + ((i * 0.137) % 3.5);
-    const left = (i * (100 / count)).toFixed(3);
-    const isPurple = i % 2 === 0;
-    return { delay, duration, left, color: isPurple ? "purple" : "cyan" };
+    const left = (i / count * 100).toFixed(1);
+    const colorIndex = i % 3;
+    const color = colorIndex === 0 ? "primary" : colorIndex === 1 ? "secondary" : "pink";
+    return { delay, duration, left, color };
   });
 
   return (

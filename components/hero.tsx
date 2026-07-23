@@ -19,14 +19,14 @@ export function Hero() {
         <div className="mb-8 flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-bg-elevated/80 px-3 py-1.5 font-mono text-xs text-text-muted">
             <span className="text-green-500">$</span>
-            <span className="text-cyan">glitch init</span>
+            <span className="text-accent-2">glitch init</span>
             <span>--portable</span>
           </div>
         </div>
 
         {/* Title */}
         <h1 className="text-balance text-center text-6xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl">
-          <span className="gradient-text glow-purple inline-block">Glitch</span>
+          <span className="gradient-text glow-accent inline-block">Glitch</span>
         </h1>
 
         {/* Subtitle */}
@@ -63,10 +63,10 @@ export function Hero() {
         {/* Stats row */}
         <div className="flex items-center justify-center mt-8">
           <div className="p-2 backdrop-blur-[2px] flex flex-wrap w-fit items-center justify-center gap-x-6 gap-y-2 rounded-md font-mono text-xs text-text-dim">
-            <Stat color="green" label="23 skills" />
-            <Stat color="purple" label="3-layer architecture" />
-            <Stat color="cyan" label="Windows · macOS · Linux" />
-            <Stat color="purple" label="Open source" />
+<Stat color="primary" label="23 skills" />
+            <Stat color="primary" label="3-layer architecture" />
+            <Stat color="secondary" label="Windows · macOS · Linux" />
+            <Stat color="primary" label="Open source" />
           </div>
         </div>
       </div>
@@ -84,13 +84,13 @@ function Stat({
   color,
   label,
 }: {
-  color: "green" | "purple" | "cyan";
+  color: "primary" | "secondary" | "pink";
   label: string;
 }) {
   const dotColor = {
-    green: "bg-green-500 shadow-[0_0_8px_var(--color-green)]",
-    purple: "bg-accent shadow-[0_0_8px_var(--color-accent)]",
-    cyan: "bg-cyan shadow-[0_0_8px_var(--color-cyan)]",
+    primary: "bg-accent shadow-[0_0_8px_var(--color-accent)]",
+    secondary: "bg-accent-2 shadow-[0_0_8px_var(--color-accent-2)]",
+    pink: "bg-accent-3 shadow-[0_0_8px_var(--color-accent-3)]",
   }[color];
 
   return (

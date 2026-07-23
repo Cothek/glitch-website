@@ -20,7 +20,7 @@ const LAYERS = [
     label: "User Data",
     sublabel: "private",
     icon: IconLock,
-    accent: "cyan" as const,
+    accent: "accent" as const,
     files: [
       { kind: "file", name: "main-memory.md" },
       { kind: "file", name: "current-session.md" },
@@ -54,10 +54,10 @@ const ACCENT = {
     badgeBg: "bg-accent-soft text-accent",
     line: "via-accent",
   },
-  cyan: {
-    iconBg: "bg-cyan-soft text-cyan border-cyan/30",
-    badgeBg: "bg-cyan-soft text-cyan",
-    line: "via-cyan",
+  accent: {
+    iconBg: "bg-accent-2-soft text-accent-2 border-accent-2/30",
+    badgeBg: "bg-accent-2-soft text-accent-2",
+    line: "via-accent-2",
   },
 };
 
@@ -66,7 +66,7 @@ export function Architecture() {
     <section id="architecture" className="border-b border-border py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-cyan">How it&apos;s built</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-accent-2">How it&apos;s built</p>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
             Three layers. One mental model.
           </h2>
@@ -104,8 +104,8 @@ export function Architecture() {
                       const FIcon = f.kind === "dir" ? IconFolder : IconFile;
                       return (
                         <div key={f.name} className="flex items-center gap-2 py-0.5">
-                          <FIcon className={f.kind === "dir" ? "h-3 w-3 text-cyan" : "h-3 w-3 text-text-muted"} />
-                          <span className={f.kind === "dir" ? "text-cyan" : "text-text-muted"}>{f.name}</span>
+                          <FIcon className={f.kind === "dir" ? "h-3 w-3 text-accent-2" : "h-3 w-3 text-text-muted"} />
+                          <span className={f.kind === "dir" ? "text-accent-2" : "text-text-muted"}>{f.name}</span>
                         </div>
                       );
                     })}
@@ -115,7 +115,7 @@ export function Architecture() {
                     href={layer.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1 font-mono text-[10px] text-text-dim hover:text-cyan transition-colors"
+                    className="mt-4 inline-flex items-center gap-1 font-mono text-[10px] text-text-dim hover:text-accent-2 transition-colors"
                   >
                     {layer.repo}
                     <IconExternalLink className="h-3 w-3" />
