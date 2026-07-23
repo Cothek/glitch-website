@@ -25,6 +25,7 @@ import {
 const ACCENT_CLASS = {
   purple: "text-accent bg-accent-soft border-accent/20",
   accent: "text-accent-2 bg-accent-2-soft border-accent-2/20",
+  accent3: "text-accent-3 bg-accent-3-soft border-accent-3/20",
 };
 
 const ACCENT = {
@@ -39,6 +40,10 @@ const ACCENT = {
   amber: {
     iconBg: "bg-amber/10 text-amber border-amber/30",
     badgeBg: "bg-amber/10 text-amber",
+  },
+  accent3: {
+    iconBg: "bg-accent-3-soft text-accent-3 border-accent-3/30",
+    badgeBg: "bg-accent-3-soft text-accent-3",
   },
 };
 
@@ -59,7 +64,7 @@ const WHY_FEATURES = [
     icon: IconMic,
     title: "Voice or text",
     body: "Push-to-talk with offline voice-to-text, or type. Glitch adapts to how you work best.",
-    accent: "amber" as const,
+    accent: "accent3" as const,
   },
 ];
 
@@ -80,7 +85,7 @@ const ARCH_LAYERS = [
     icon: IconServer,
     title: "Launcher",
     text: "Setup scripts, config templates, validation tools. Portable, cross-platform.",
-    accent: "amber" as const,
+    accent: "accent3" as const,
   },
 ];
 
@@ -137,7 +142,7 @@ const PROVIDERS = [
     label: "OpenRouter",
     sublabel: "pay-per-use",
     icon: IconRoute,
-    accent: "amber" as const,
+    accent: "accent3" as const,
     description: "Route to 200+ models. One API key.",
     steps: [
       {
@@ -301,7 +306,7 @@ export default function Home() {
               </div>
 
               <div className="hover-lift rounded-lg border border-border bg-bg-elevated/40 p-5">
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-amber/10 text-amber border-amber/20">
+                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-accent-3-soft text-accent-3 border-accent-3/20">
                   <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 </div>
                 <h3 className="text-base font-semibold tracking-tight">Image &amp; Creative</h3>
@@ -309,7 +314,7 @@ export default function Home() {
               </div>
 
               <div className="hover-lift rounded-lg border border-border bg-bg-elevated/40 p-5">
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-accent-2-soft text-accent-2 border-accent-2/20">
+                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-accent-soft text-accent border-accent/20">
                   <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <h3 className="text-base font-semibold tracking-tight">System &amp; Automation</h3>
@@ -317,7 +322,7 @@ export default function Home() {
               </div>
 
               <div className="hover-lift rounded-lg border border-border bg-bg-elevated/40 p-5">
-                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-accent-soft text-accent border-accent/20">
+                <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border bg-accent-2-soft text-accent-2 border-accent-2/20">
                   <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
                 <h3 className="text-base font-semibold tracking-tight">Security &amp; Analysis</h3>

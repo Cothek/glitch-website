@@ -45,13 +45,13 @@ export function Footer() {
             <p className="font-mono text-[10px] uppercase tracking-widest text-text-dim">Resources</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <a href="#skills" className="text-text-muted transition-colors hover:text-text">Skills</a>
+                <a href="/#skills" className="text-text-muted transition-colors hover:text-text">Skills</a>
               </li>
               <li>
-                <a href="#install" className="text-text-muted transition-colors hover:text-text">Install guide</a>
+                <a href="/#install" className="text-text-muted transition-colors hover:text-text">Install guide</a>
               </li>
               <li>
-                <a href="#architecture" className="text-text-muted transition-colors hover:text-text">Architecture</a>
+                <a href="/#architecture" className="text-text-muted transition-colors hover:text-text">Architecture</a>
               </li>
               <li>
                 <a href="https://github.com/Cothek/glitch-ai/issues" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors hover:text-text">Issues</a>
