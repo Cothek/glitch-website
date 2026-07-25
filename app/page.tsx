@@ -542,10 +542,6 @@ export default function Home() {
                   );
                 })}
               </div>
-
-              <p className="mt-10 text-center text-sm text-text-muted">
-                Works offline, on your LAN, or anywhere. Full setup guide on GitHub.
-              </p>
             </div>
           </div>
         </section>
