@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type React from "react";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
@@ -89,18 +90,36 @@ const ARCH_LAYERS = [
   },
 ];
 
-const PROVIDERS = [
+type Provider = {
+  label: string;
+  sublabel: string;
+  icon: React.ComponentType<{ className?: string }>;
+  accent: "purple" | "accent" | "amber" | "accent3";
+  url: string;
+  signupUrl: string;
+  description: string;
+  steps: Array<{
+    n: number;
+    title: string;
+    body: string;
+    code: string;
+  }>;
+};
+
+const PROVIDERS: Provider[] = [
   {
     label: "NVIDIA",
     sublabel: "free",
     icon: IconZap,
-    accent: "accent" as const,
-    description: "NVIDIA free endpoint. No credit card needed.",
+    accent: "accent",
+    url: "https://build.nvidia.com",
+    signupUrl: "https://ngc.nvidia.com/signup",
+    description: "Free NVIDIA models via OpenCode's built-in NVIDIA integration. No API key needed - just authenticate with your NVIDIA account.",
     steps: [
       {
         n: 1,
         title: "Connect NVIDIA provider",
-        body: "In OpenCode, run /connect and select NVIDIA. Authenticate with your NVIDIA account.",
+        body: "Create a free NVIDIA account, then in OpenCode run /connect and select NVIDIA to authenticate.",
         code: "/connect\n# Select NVIDIA from the list\n# Follow the OAuth flow in your browser",
       },
       {
@@ -115,14 +134,16 @@ const PROVIDERS = [
     label: "OpenCode Go",
     sublabel: "free trial",
     icon: IconKey,
-    accent: "purple" as const,
-    description: "OpenCode Go managed API. Pay-per-token from $0.14/1M input.",
+    accent: "purple",
+    url: "https://opencode.ai",
+    signupUrl: "https://opencode.ai",
+    description: "OpenCode's managed API gateway. One subscription gives you access to DeepSeek, Qwen, Kimi, and more. From $0.14/1M input tokens.",
     steps: [
       {
         n: 1,
         title: "Create an account",
-        body: "Sign up at opencode.ai and add billing information.",
-        code: "# Visit https://opencode.ai\n# Create account \u2192 Add billing",
+        body: "Sign up at opencode.ai and add billing information to get your API key.",
+        code: "# Visit https://opencode.ai\n# Create account \u2192 Get API key",
       },
       {
         n: 2,
@@ -142,14 +163,16 @@ const PROVIDERS = [
     label: "OpenRouter",
     sublabel: "pay-per-use",
     icon: IconRoute,
-    accent: "accent3" as const,
-    description: "Route to 200+ models. One API key.",
+    accent: "accent3",
+    url: "https://openrouter.ai",
+    signupUrl: "https://openrouter.ai/keys",
+    description: "Route to 200+ models from OpenAI, Anthropic, Google, Meta, and more. One API key, pay-per-token. Free credits on signup.",
     steps: [
       {
         n: 1,
         title: "Create an account",
-        body: "Sign up at openrouter.ai and add credits.",
-        code: "# Visit https://openrouter.ai\n# Create account \u2192 Add credits",
+        body: "Sign up at openrouter.ai to get your API key. New accounts get free starter credits.",
+        code: "# Visit https://openrouter.ai\n# Create account \u2192 Get API key",
       },
       {
         n: 2,
@@ -472,8 +495,23 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-semibold tracking-tight">{provider.label}</h3>
+                      <h3 className="text-lg font-semibold tracking-tight">
+                        <a href={provider.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                          {provider.label}
+                          <span className="sr-only"> (opens in new tab)</span>
+                        </a>
+                      </h3>
                       <p className="mt-1 text-sm text-text-muted">{provider.description}</p>
+                      <a
+                        href={provider.signupUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-2"
+                      >
+                        Create account
+                        <span className="sr-only"> (opens in new tab)</span>
+                        <span aria-hidden="true"> ↗</span>
+                      </a>
 
                       <ol className="mt-5 flex-1 space-y-4">
                         {provider.steps.map((step) => (
