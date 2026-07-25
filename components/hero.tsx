@@ -63,7 +63,7 @@ export function Hero() {
         {/* Stats row */}
         <div className="flex items-center justify-center mt-8">
           <div className="p-2 backdrop-blur-[2px] flex flex-wrap w-fit items-center justify-center gap-x-6 gap-y-2 rounded-md font-mono text-xs text-text-dim">
-<Stat color="primary" label="23 skills" />
+<Stat color="primary" label="32 skills" />
             <Stat color="primary" label="3-layer architecture" />
             <Stat color="secondary" label="Windows · macOS · Linux" />
             <Stat color="primary" label="Open source" />

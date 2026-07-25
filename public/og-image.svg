@@ -44,7 +44,7 @@
   <g font-family="ui-monospace, monospace" font-size="18" fill="#8888a0">
     <g transform="translate(280, 460)">
       <rect x="0" y="0" width="120" height="36" rx="18" fill="#12121a" stroke="#1e1e30"/>
-      <text x="60" y="24" text-anchor="middle">23 skills</text>
+      <text x="60" y="24" text-anchor="middle">32 skills</text>
     </g>
     <g transform="translate(420, 460)">
       <rect x="0" y="0" width="220" height="36" rx="18" fill="#12121a" stroke="#1e1e30"/>

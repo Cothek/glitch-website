@@ -90,16 +90,15 @@ const CATEGORIES = [CODE_SKILLS, DESIGN_SKILLS, IMAGE_SKILLS, SYSTEM_SKILLS, SEC
 
 const AGENTS = [
   { name: "@general", model: "deepseek-v4-flash-free", purpose: "General purpose: bash, file ops, simple edits, standard code" },
-  { name: "@coder", model: "nemotron-3-ultra-free", purpose: "Senior full-stack engineer for production code and complex logic" },
+  { name: "@coder", model: "minimax-m3", purpose: "Senior full-stack engineer for production code and complex logic" },
   { name: "@ui-designer", model: "nemotron-3-ultra-free", purpose: "Senior UI designer: shadcn/ui, Radix, Tailwind v4" },
-  { name: "@reviewer", model: "nemotron-3-ultra-free", purpose: "Independent code quality gate: read-only, severity-rated reports" },
-  { name: "@testing", model: "nemotron-3-ultra-free", purpose: "Test writer: TDD, framework detection, edge case coverage" },
+  { name: "@reviewer", model: "minimax-m3", purpose: "Independent code quality gate: read-only, severity-rated reports" },
+  { name: "@testing", model: "minimax-m3", purpose: "Test writer: TDD, framework detection, edge case coverage" },
   { name: "@vision", model: "mimo-v2.5-free", purpose: "Image and visual content analysis: read-only" },
-  { name: "@pentester", model: "nemotron-3-ultra-free", purpose: "Application security tester: OWASP, scanning, structured reporting" },
-  { name: "@memory", model: "minimax-m3", purpose: "Memory writer that reads and writes user files only" },
+  { name: "@pentester", model: "minimax-m3", purpose: "Application security tester: OWASP, scanning, structured reporting" },
+  { name: "@memory", model: "deepseek-v4-flash-free", purpose: "Memory writer that reads and writes user files only" },
   { name: "@explore", model: "deepseek-v4-flash-free", purpose: "Codebase research: read-only, find files, search code" },
   { name: "@plan", model: "deepseek-v4-flash-free", purpose: "Architecture planning: reason without executing code" },
-  { name: "@build", model: "deepseek-v4-flash-free", purpose: "Code scaffolding: generates code from prompts" },
 ];
 
 const ACCENT_CLASSES = {
@@ -181,7 +180,7 @@ export function Skills() {
               <p className="font-mono text-xs uppercase tracking-widest text-accent">
                 Sub-Agents
               </p>
-              <p className="text-xs text-text-dim">11 specialized agents dispatched by Glitch</p>
+              <p className="text-xs text-text-dim">10 specialized agents dispatched by Glitch</p>
             </div>
           </div>
 

@@ -12,7 +12,7 @@ const LAYERS = [
       { kind: "dir", name: "library/" },
       { kind: "dir", name: "skills/" },
     ],
-    note: "23 skills, identity, prompt rules",
+    note: "32 skills, identity, prompt rules",
     repo: "Cothek/glitch-engine",
     url: "https://github.com/Cothek/glitch-engine",
   },
