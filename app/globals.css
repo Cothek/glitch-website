@@ -99,10 +99,17 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Specific scrollable elements - ensure styles apply and prevent layout shift */
+/* Scrollable elements only - reserve gutter space to prevent layout shift.
+   Substring match on "overflow" alone catches overflow-hidden/clip which never
+   show scrollbars, wasting ~6px on the right. Match only the auto/scroll variants. */
 pre,
 .terminal-body,
-[class*="overflow"],
+[class*="overflow-auto"],
+[class*="overflow-scroll"],
+[class*="overflow-x-auto"],
+[class*="overflow-x-scroll"],
+[class*="overflow-y-auto"],
+[class*="overflow-y-scroll"],
 [class*="scroll"] {
   scrollbar-gutter: stable;
 }
