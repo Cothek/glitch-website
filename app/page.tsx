@@ -432,7 +432,7 @@ export default function Home() {
                     <CopyButton text={WINDOWS_INSTALL} />
                   </div>
                   <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
-                    <code>{WINDOWS_INSTALL}</code>
+                    <code className="break-all">{WINDOWS_INSTALL}</code>
                   </pre>
                 </div>
               </div>
@@ -452,7 +452,7 @@ export default function Home() {
                     <CopyButton text={UNIX_INSTALL} />
                   </div>
                   <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
-                    <code>{UNIX_INSTALL}</code>
+                    <code className="break-all">{UNIX_INSTALL}</code>
                   </pre>
                 </div>
               </div>
