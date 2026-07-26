@@ -102,7 +102,6 @@ body {
 /* Scrollable elements only - reserve gutter space to prevent layout shift.
    Substring match on "overflow" alone catches overflow-hidden/clip which never
    show scrollbars, wasting ~6px on the right. Match only the auto/scroll variants. */
-pre,
 .terminal-body,
 [class*="overflow-auto"],
 [class*="overflow-scroll"],
@@ -145,7 +144,6 @@ pre::-webkit-scrollbar-thumb:hover,
 }
 
 /* Firefox specific selectors for scrollable elements */
-pre,
 .terminal-body,
 [class*="overflow"],
 [class*="scroll"] {

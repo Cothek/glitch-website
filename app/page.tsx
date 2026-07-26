@@ -421,7 +421,7 @@ export default function Home() {
                 <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
                   Windows (PowerShell)
                 </p>
-                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                <div className="relative overflow-clip rounded-md border border-border bg-bg-code">
                   <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
                     <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
                       <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -441,7 +441,7 @@ export default function Home() {
                 <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
                   macOS / Linux (bash)
                 </p>
-                <div className="relative overflow-hidden rounded-md border border-border bg-bg-code">
+                <div className="relative overflow-clip rounded-md border border-border bg-bg-code">
                   <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
                     <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
                       <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -523,7 +523,7 @@ export default function Home() {
                               <h4 className="text-sm font-semibold tracking-tight">{step.title}</h4>
                             </div>
                             <p className="mt-1 pl-8 text-xs text-text-muted">{step.body}</p>
-                            <div className="relative mt-2 overflow-hidden rounded-md border border-border bg-bg-code">
+                            <div className="relative mt-2 overflow-clip rounded-md border border-border bg-bg-code">
                               <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-1.5">
                                 <div className="flex items-center gap-1.5 font-mono text-[10px] text-text-dim">
                                   <IconTerminal className="h-3 w-3" />
