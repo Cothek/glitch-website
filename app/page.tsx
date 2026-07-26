@@ -431,8 +431,8 @@ export default function Home() {
                     </div>
                     <CopyButton text={WINDOWS_INSTALL} />
                   </div>
-                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
-                    <code className="break-all">{WINDOWS_INSTALL}</code>
+                  <pre className="whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{WINDOWS_INSTALL}</code>
                   </pre>
                 </div>
               </div>
@@ -451,8 +451,8 @@ export default function Home() {
                     </div>
                     <CopyButton text={UNIX_INSTALL} />
                   </div>
-                  <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
-                    <code className="break-all">{UNIX_INSTALL}</code>
+                  <pre className="whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-text">
+                    <code>{UNIX_INSTALL}</code>
                   </pre>
                 </div>
               </div>
@@ -531,7 +531,7 @@ export default function Home() {
                                 </div>
                                 <CopyButton text={step.code} />
                               </div>
-                              <pre className="overflow-x-auto p-3 font-mono text-xs leading-relaxed text-text">
+                              <pre className="whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-text">
                                 <code>{step.code}</code>
                               </pre>
                             </div>
