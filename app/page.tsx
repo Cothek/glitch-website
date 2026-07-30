@@ -113,7 +113,7 @@ const PROVIDERS: Provider[] = [
     icon: IconZap,
     accent: "accent",
     url: "https://build.nvidia.com",
-    signupUrl: "https://ngc.nvidia.com/signup",
+    signupUrl: "https://build.nvidia.com/",
     description: "Free NVIDIA models via OpenCode's built-in NVIDIA integration. No API key needed - just authenticate with your NVIDIA account.",
     steps: [
       {
