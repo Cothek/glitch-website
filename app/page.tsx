@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import type React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
@@ -190,8 +191,21 @@ const PROVIDERS: Provider[] = [
   },
 ];
 
-const WINDOWS_INSTALL = "irm https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.ps1 | iex";
-const UNIX_INSTALL = "curl -sL https://raw.githubusercontent.com/Cothek/glitch-ai/main/scripts/install.sh | bash";
+const REPO_RAW = "https://raw.githubusercontent.com/Cothek/glitch-ai";
+
+// Windows installer supports -Branch: fetch the develop script, then tell it to
+// checkout develop after cloning (matches the installer's own documented example).
+// NOTE: "\\" renders as a single literal "\" in the PowerShell path — do not "fix" it.
+const windowsInstall = (branch: "main" | "develop") =>
+  branch === "develop"
+    ? `irm ${REPO_RAW}/develop/scripts/install.ps1 -OutFile "$env:TEMP\\glitch-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\\glitch-install.ps1" -Branch develop`
+    : `irm ${REPO_RAW}/main/scripts/install.ps1 | iex`;
+
+// Unix installer takes --branch: download the develop script, then run it with the flag.
+const unixInstall = (branch: "main" | "develop") =>
+  branch === "develop"
+    ? `curl -sL ${REPO_RAW}/develop/scripts/install.sh -o /tmp/glitch-install.sh && bash /tmp/glitch-install.sh --branch develop`
+    : `curl -sL ${REPO_RAW}/main/scripts/install.sh | bash`;
 
 const REQUIREMENTS = [
   "Windows 10+ / macOS 13+ / Linux",
@@ -200,6 +214,10 @@ const REQUIREMENTS = [
 ];
 
 export default function Home() {
+  const [branch, setBranch] = useState<"main" | "develop">("main");
+  const win = windowsInstall(branch);
+  const unix = unixInstall(branch);
+
   return (
     <>
       <Nav />
@@ -416,7 +434,28 @@ export default function Home() {
               </p>
             </header>
 
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-start">
+            <div role="group" aria-label="Install branch" className="mt-8 flex items-center justify-center gap-2 font-mono text-[11px]">
+              <span className="text-text-dim">branch:</span>
+              <button
+                type="button"
+                onClick={() => setBranch("main")}
+                className={branch === "main" ? "font-semibold text-accent" : "text-text-dim transition-colors hover:text-text"}
+                aria-pressed={branch === "main"}
+              >
+                main
+              </button>
+              <span className="text-text-dim">/</span>
+              <button
+                type="button"
+                onClick={() => setBranch("develop")}
+                className={branch === "develop" ? "font-semibold text-accent" : "text-text-dim transition-colors hover:text-text"}
+                aria-pressed={branch === "develop"}
+              >
+                develop
+              </button>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start">
               <div className="flex-1 min-w-0">
                 <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
                   Windows (PowerShell)
@@ -429,10 +468,10 @@ export default function Home() {
                       </svg>
                       powershell
                     </div>
-                    <CopyButton text={WINDOWS_INSTALL} />
+                    <CopyButton text={win} />
                   </div>
                   <pre className="whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-text">
-                    <code>{WINDOWS_INSTALL}</code>
+                    <code>{win}</code>
                   </pre>
                 </div>
               </div>
@@ -449,10 +488,10 @@ export default function Home() {
                       </svg>
                       bash
                     </div>
-                    <CopyButton text={UNIX_INSTALL} />
+                    <CopyButton text={unix} />
                   </div>
                   <pre className="whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-text">
-                    <code>{UNIX_INSTALL}</code>
+                    <code>{unix}</code>
                   </pre>
                 </div>
               </div>
