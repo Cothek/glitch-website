@@ -40,11 +40,6 @@ glitch-website/
 │   └── globals.css             # Tailwind v4 + custom CSS
 ├── components/
 │   ├── hero.tsx
-│   ├── features.tsx
-│   ├── showcase.tsx
-│   ├── architecture.tsx
-│   ├── install.tsx
-│   ├── download-cta.tsx
 │   ├── footer.tsx
 │   └── ui/                     # Buttons, cards, code blocks
 ├── public/

@@ -68,6 +68,14 @@ body {
   color: var(--color-text);
 }
 
+/* Clickable elements get the pointer cursor (Tailwind v4 preflight leaves buttons at default) */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+select:not(:disabled),
+summary {
+  cursor: pointer;
+}
+
 ::selection {
   background: var(--color-accent-soft);
   color: var(--color-text);

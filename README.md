@@ -23,12 +23,7 @@ glitch-website/
 │   ├── nav.tsx
 │   ├── hero.tsx
 │   ├── scan-lines.tsx          # Hero background animation
-│   ├── features.tsx
-│   ├── showcase.tsx            # Terminal-style demo
-│   ├── architecture.tsx
-│   ├── install.tsx
 │   ├── copy-button.tsx         # Client component
-│   ├── download.tsx
 │   ├── footer.tsx
 │   ├── terminal.tsx            # Reusable terminal frame
 │   └── icons.tsx               # Inline SVG icons (no icon library)

@@ -11,21 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE_URL}/#features`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${SITE_URL}/#install`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/#download`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
       priority: 0.9,
     },
   ];
