@@ -22,6 +22,7 @@ import {
   IconRoute,
   IconTerminal,
   IconDownload,
+  IconLayers,
 } from "@/components/icons";
 
 const ACCENT_CLASS = {
@@ -66,6 +67,27 @@ const WHY_FEATURES = [
     icon: IconMic,
     title: "Voice or text",
     body: "Push-to-talk with offline voice-to-text, or type. Glitch adapts to how you work best.",
+    accent: "accent3" as const,
+  },
+];
+
+const SPECIALIST_FEATURES = [
+  {
+    icon: IconBrain,
+    title: "Right model, right job",
+    body: "A coding model for builders, a vision model for screenshots, a review model for quality gates. Specialists beat one-size-fits-all.",
+    accent: "purple" as const,
+  },
+  {
+    icon: IconLayers,
+    title: "Parallel dispatch",
+    body: "Independent work fans out to multiple agents at once and comes back consolidated. No waiting on one model to do everything in sequence.",
+    accent: "accent" as const,
+  },
+  {
+    icon: IconCheck,
+    title: "Free, with automatic fallback",
+    body: "Every agent runs a free tier by default and auto-upgrades to a paid model when quota runs out or quality matters. Cost-efficient by design.",
     accent: "accent3" as const,
   },
 ];
@@ -310,6 +332,50 @@ export default function Home() {
                 </TerminalLine>
               </Terminal>
             </div>
+          </div>
+        </section>
+
+        {/* Agent Models — per-agent model selection */}
+        <section id="specialists" className="border-b border-border py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <header className="mx-auto max-w-2xl text-center">
+              <p className="font-mono text-xs uppercase tracking-widest text-accent">
+                Agent Models
+              </p>
+              <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+                A team of specialists, not one model.
+              </h2>
+              <p className="mt-4 text-text-muted">
+                Most AI assistants run one model for everything. Glitch works the way agent frameworks do: a coordinator dispatches to specialized sub-agents, each running the model best suited to its job.
+              </p>
+            </header>
+
+            <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {SPECIALIST_FEATURES.map((f) => {
+                const Icon = f.icon;
+                return (
+                  <li
+                    key={f.title}
+                    className="hover-lift group relative rounded-lg border border-border bg-bg-elevated/40 p-5"
+                  >
+                    <div
+                      className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md border ${ACCENT_CLASS[f.accent]}`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-base font-semibold tracking-tight">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text-muted">{f.body}</p>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <p className="mt-10 text-center text-sm text-text-muted">
+              Per-agent models are the standard in agent frameworks, but rare among turnkey assistants.{" "}
+              <Link href="/skills#agents" className="text-accent hover:underline">
+                See the full agent lineup →
+              </Link>
+            </p>
           </div>
         </section>
 
