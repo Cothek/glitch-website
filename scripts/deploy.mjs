@@ -5,8 +5,8 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SITE_URL = "https://glitch-ai.vercel.app";
-const REPO_URL = "https://github.com/Cothek/glitch-ai";
+const SITE_URL = "https://glitch-pie.vercel.app";
+const REPO_URL = "https://github.com/Cothek/glitch-pi";
 
 const token = process.env.VERCEL_TOKEN;
 const vercelBin = (() => {
@@ -35,7 +35,7 @@ if (token && vercelBin) {
   console.log(`  Open: https://vercel.com/new/clone?repository-url=${encodeURIComponent(REPO_URL)}&project-name=glitch-website&root-directory=glitch-website\n`);
   console.log("OPTION B — Vercel web UI:");
   console.log("  1. Go to https://vercel.com/new");
-  console.log("  2. Import the repo: Cothek/glitch-ai");
+  console.log("  2. Import the repo: Cothek/glitch-pi");
   console.log("  3. Set Root Directory to: glitch-website");
   console.log("  4. Click Deploy\n");
   console.log("OPTION C — CLI with token:");

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://glitch-ai.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://glitch-pie.vercel.app";
 
 // Umami analytics — only loads when WEBSITE_ID is set
 const umamiUrl =
@@ -31,8 +31,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Glitch — Your AI companion that actually remembers",
-    template: "%s · Glitch",
+    default: "Glitch Pie — Your AI companion that actually remembers",
+    template: "%s · Glitch Pie",
   },
   description:
     "Portable AI companion environment with persistent memory, skills, and agents. One clone, one setup, ready on any PC. Open source, your data stays local.",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "memory AI",
     "local AI",
   ],
-  authors: [{ name: "Glitch", url: "https://github.com/Cothek/glitch-ai" }],
+  authors: [{ name: "Glitch", url: "https://github.com/Cothek/glitch-pi" }],
   creator: "Glitch",
   publisher: "Glitch",
   applicationName: "Glitch",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "Glitch",
-    title: "Glitch — Your AI companion that actually remembers",
+    siteName: "Glitch Pie",
+    title: "Glitch Pie — Your AI companion that actually remembers",
     description:
       "Portable AI companion with persistent memory, skills, and agents. Open source. Your data stays local.",
     images: [
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Glitch — Your AI companion",
+        alt: "Glitch Pie — Your AI companion",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Glitch — Your AI companion that actually remembers",
+    title: "Glitch Pie — Your AI companion that actually remembers",
     description:
       "Portable AI companion with persistent memory, skills, and agents.",
     images: ["/og-image.svg"],

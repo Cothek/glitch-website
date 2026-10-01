@@ -22,9 +22,9 @@ export function Footer() {
             <p className="font-mono text-[10px] uppercase tracking-widest text-text-dim">Project</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <a href="https://github.com/Cothek/glitch-ai" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-text-muted transition-colors hover:text-text">
+                <a href="https://github.com/Cothek/glitch-pi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-text-muted transition-colors hover:text-text">
                   <IconGithub className="h-3.5 w-3.5" />
-                  glitch-ai
+                  glitch-pie
                 </a>
               </li>
               <li>
@@ -54,17 +54,17 @@ export function Footer() {
                 <a href="/#architecture" className="text-text-muted transition-colors hover:text-text">Architecture</a>
               </li>
               <li>
-                <a href="https://github.com/Cothek/glitch-ai/issues" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors hover:text-text">Issues</a>
+                <a href="https://github.com/Cothek/glitch-pi/issues" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors hover:text-text">Issues</a>
               </li>
               <li>
-                <a href="https://github.com/Cothek/glitch-ai/blob/main/README.md" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors hover:text-text">README</a>
+                <a href="https://github.com/Cothek/glitch-pi/blob/main/README.md" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors hover:text-text">README</a>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-text-dim sm:flex-row sm:items-center">
-          <p>(c) 2026 Glitch - Built with OpenCode</p>
+          <p>(c) 2026 Glitch Pie - Built with OpenCode</p>
           <p className="font-mono">
             <span aria-hidden className="mr-1">*</span>
             <span>v1.0 - public - open source</span>

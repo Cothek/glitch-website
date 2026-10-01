@@ -1,6 +1,6 @@
 # Glitch Website — Implementation Plan
 
-**Goal**: Build a beautiful, fast marketing site for Glitch AI that showcases what it does and lets friends download it with one click. Deploy to Vercel.
+**Goal**: Build a beautiful, fast marketing site for Glitch Pie that showcases what it does and lets friends download it with one click. Deploy to Vercel.
 
 **Status**: Plan complete, ready to execute autonomously.
 
@@ -27,7 +27,7 @@
 **Why this stack**:
 - **Vercel-native** — zero-config deploy, edge caching, serverless functions
 - **Static-first** — pre-rendered HTML for SEO + speed
-- **Download via GitHub** — download button points to `https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip`
+- **Download via GitHub** — download button points to `https://github.com/Cothek/glitch-pi/archive/refs/heads/main.zip`
 - **Image optimization** — built-in `<Image>` for screenshots
 - **Type safety** — TypeScript catches bugs at build time
 
@@ -72,7 +72,7 @@ glitch-website/
 
 ## Download Flow
 
-**Strategy**: Download button points to the GitHub archive URL (`https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip`) — GitHub automatically packages the repo as a ZIP on the fly.
+**Strategy**: Download button points to the GitHub archive URL (`https://github.com/Cothek/glitch-pi/archive/refs/heads/main.zip`) — GitHub automatically packages the repo as a ZIP on the fly.
 
 **Contents** (full repo excluding `.git/` and `node_modules/`):
 - ✅ Engine code (`glitch-memorycore/`), scripts, config, launchers, README

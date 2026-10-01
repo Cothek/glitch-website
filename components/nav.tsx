@@ -15,7 +15,7 @@ export function Nav() {
         <Link href="/" className="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight">
           <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent)]" />
           <span className="gradient-text">glitch</span>
-          <span className="text-text-dim">/v1</span>
+          <span className="text-text-dim">/pie</span>
         </Link>
 
         {/* Center links — change based on page */}
@@ -38,7 +38,7 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/Cothek/glitch-ai"
+            href="https://github.com/Cothek/glitch-pi"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden h-9 items-center gap-1.5 rounded-full border border-border px-3 text-xs font-medium text-text-muted transition-colors hover:border-border-strong hover:text-text sm:inline-flex"

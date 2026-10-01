@@ -1,6 +1,6 @@
 # Glitch Website
 
-The marketing site for [Glitch AI](https://github.com/Cothek/glitch-ai) — a personal AI companion with persistent memory, skills, and agents.
+The marketing site for [Glitch Pie](https://github.com/Cothek/glitch-pi) — a personal AI companion with persistent memory, skills, and agents.
 
 **Live**: _(deployed URL here)_
 
@@ -94,11 +94,11 @@ In the Vercel dashboard for the project:
 | **Output Directory** | `.next` (default) |
 
 Optional env vars:
-- `NEXT_PUBLIC_SITE_URL` — your deployed URL (e.g. `https://glitch-ai.vercel.app`). Used for OpenGraph and canonical links.
+- `NEXT_PUBLIC_SITE_URL` — your deployed URL (e.g. `https://glitch-pie.vercel.app`). Used for OpenGraph and canonical links.
 
 ## Download archive
 
-The download button on the site points to the GitHub archive URL (`https://github.com/Cothek/glitch-ai/archive/refs/heads/main.zip`). GitHub automatically packages the repo as a ZIP on every download — no build step needed.
+The download button on the site points to the GitHub archive URL (`https://github.com/Cothek/glitch-pi/archive/refs/heads/main.zip`). GitHub automatically packages the repo as a ZIP on every download — no build step needed.
 
 ## Design system
 
