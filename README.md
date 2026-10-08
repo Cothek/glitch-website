@@ -1,6 +1,6 @@
 # Glitch Website
 
-The marketing site for [Glitch Pie](https://github.com/Cothek/glitch-pi) — a personal AI companion with persistent memory, skills, and agents.
+The marketing site for [Glitch Pi](https://github.com/Cothek/glitch-pi) — a personal AI companion with persistent memory, skills, and agents.
 
 **Live**: _(deployed URL here)_
 

@@ -15,7 +15,7 @@ export function Nav() {
         <Link href="/" className="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight">
           <span aria-hidden className="inline-block h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent)]" />
           <span className="gradient-text">glitch</span>
-          <span className="text-text-dim">/pie</span>
+          <span className="text-text-dim">/pi</span>
         </Link>
 
         {/* Center links — change based on page */}

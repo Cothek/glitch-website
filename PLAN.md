@@ -1,6 +1,6 @@
 # Glitch Website — Implementation Plan
 
-**Goal**: Build a beautiful, fast marketing site for Glitch Pie that showcases what it does and lets friends download it with one click. Deploy to Vercel.
+**Goal**: Build a beautiful, fast marketing site for Glitch Pi that showcases what it does and lets friends download it with one click. Deploy to Vercel.
 
 **Status**: Plan complete, ready to execute autonomously.
 

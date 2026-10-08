@@ -24,7 +24,7 @@ export function Footer() {
               <li>
                 <a href="https://github.com/Cothek/glitch-pi" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-text-muted transition-colors hover:text-text">
                   <IconGithub className="h-3.5 w-3.5" />
-                  glitch-pie
+                  glitch-pi
                 </a>
               </li>
               <li>
@@ -64,7 +64,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-text-dim sm:flex-row sm:items-center">
-          <p>(c) 2026 Glitch Pie - Built with OpenCode</p>
+          <p>(c) 2026 Glitch Pi - Built with OpenCode</p>
           <p className="font-mono">
             <span aria-hidden className="mr-1">*</span>
             <span>v1.0 - public - open source</span>

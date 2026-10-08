@@ -220,14 +220,14 @@ const REPO_RAW = "https://raw.githubusercontent.com/Cothek/glitch-pi";
 // NOTE: "\\" renders as a single literal "\" in the PowerShell path — do not "fix" it.
 const windowsInstall = (branch: "main" | "develop") =>
   branch === "develop"
-    ? `irm ${REPO_RAW}/develop/scripts/install-pie.ps1 -OutFile "$env:TEMP\\glitch-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\\glitch-install.ps1" -Branch develop`
-    : `irm ${REPO_RAW}/main/scripts/install-pie.ps1 | iex`;
+    ? `irm ${REPO_RAW}/develop/scripts/install-pi.ps1 -OutFile "$env:TEMP\\glitch-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\\glitch-install.ps1" -Branch develop`
+    : `irm ${REPO_RAW}/main/scripts/install-pi.ps1 | iex`;
 
 // Unix installer takes --branch: download the develop script, then run it with the flag.
 const unixInstall = (branch: "main" | "develop") =>
   branch === "develop"
-    ? `curl -sL ${REPO_RAW}/develop/scripts/install-pie.sh -o /tmp/glitch-install.sh && bash /tmp/glitch-install.sh --branch develop`
-    : `curl -sL ${REPO_RAW}/main/scripts/install-pie.sh | bash`;
+    ? `curl -sL ${REPO_RAW}/develop/scripts/install-pi.sh -o /tmp/glitch-install.sh && bash /tmp/glitch-install.sh --branch develop`
+    : `curl -sL ${REPO_RAW}/main/scripts/install-pi.sh | bash`;
 
 const REQUIREMENTS = [
   "Windows 10+ / macOS 13+ / Linux",
@@ -285,7 +285,7 @@ export default function Home() {
               <Terminal title="glitch" className="max-w-3xl mx-auto">
                 <TerminalPrompt>$ glitch</TerminalPrompt>
                 <TerminalLine>
-                  <span className="dim">Glitch Pie v1.0</span> — <span className="dim">your personal companion</span>
+                  <span className="dim">Glitch Pi v1.0</span> — <span className="dim">your personal companion</span>
                   {"\n\n"}
                   <span className="prompt-text">💜 Good morning! </span>
                   <span className="dim">8:42 AM on Sunday, June 1st, 2026</span>

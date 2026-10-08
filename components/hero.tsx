@@ -26,7 +26,7 @@ export function Hero() {
 
         {/* Title */}
         <h1 className="text-balance text-center text-6xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl">
-          <span className="gradient-text glow-accent inline-block">Glitch Pie</span>
+          <span className="gradient-text glow-accent inline-block">Glitch Pi</span>
         </h1>
 
         {/* Subtitle */}
@@ -46,7 +46,7 @@ export function Hero() {
             className="group inline-flex h-12 items-center gap-2 rounded-full bg-accent px-6 text-sm font-semibold text-bg transition-all hover:bg-accent-hover hover:shadow-[0_0_30px_var(--color-accent-soft)]"
           >
             <IconDownload className="h-4 w-4" />
-            Install Glitch Pie
+            Install Glitch Pi
             <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
