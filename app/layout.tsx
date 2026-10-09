@@ -31,8 +31,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Glitch Pi — Your AI companion that actually remembers",
-    template: "%s · Glitch Pi",
+    default: "Glitch — Your AI companion that actually remembers",
+    template: "%s · Glitch",
   },
   description:
     "Portable AI companion environment with persistent memory, skills, and agents. One clone, one setup, ready on any PC. Open source, your data stays local.",
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    siteName: "Glitch Pi",
-    title: "Glitch Pi — Your AI companion that actually remembers",
+    siteName: "Glitch",
+    title: "Glitch — Your AI companion that actually remembers",
     description:
       "Portable AI companion with persistent memory, skills, and agents. Open source. Your data stays local.",
     images: [
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Glitch Pi — Your AI companion",
+        alt: "Glitch — Your AI companion",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Glitch Pi — Your AI companion that actually remembers",
+    title: "Glitch — Your AI companion that actually remembers",
     description:
       "Portable AI companion with persistent memory, skills, and agents.",
     images: ["/og-image.svg"],

@@ -285,7 +285,7 @@ export default function Home() {
               <Terminal title="glitch" className="max-w-3xl mx-auto">
                 <TerminalPrompt>$ glitch</TerminalPrompt>
                 <TerminalLine>
-                  <span className="dim">Glitch Pi v1.0</span> — <span className="dim">your personal companion</span>
+                  <span className="dim">Glitch v1.0</span> — <span className="dim">your personal companion</span>
                   {"\n\n"}
                   <span className="prompt-text">💜 Good morning! </span>
                   <span className="dim">8:42 AM on Sunday, June 1st, 2026</span>

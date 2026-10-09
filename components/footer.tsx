@@ -64,7 +64,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-text-dim sm:flex-row sm:items-center">
-          <p>(c) 2026 Glitch Pi - Built with OpenCode</p>
+          <p>(c) 2026 Glitch - Built with OpenCode</p>
           <p className="font-mono">
             <span aria-hidden className="mr-1">*</span>
             <span>v1.0 - public - open source</span>

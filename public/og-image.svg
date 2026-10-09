@@ -35,7 +35,7 @@
   <ellipse cx="600" cy="280" rx="500" ry="200" fill="url(#glow)"/>
 
   <!-- Title -->
-  <text x="600" y="280" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="140" font-weight="800" fill="url(#titleGrad)" letter-spacing="-4">Glitch Pi</text>
+  <text x="600" y="280" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="140" font-weight="800" fill="url(#titleGrad)" letter-spacing="-4">Glitch</text>
 
   <!-- Subtitle -->
   <text x="600" y="370" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="500" fill="#8888a0">Your AI companion that actually remembers</text>
